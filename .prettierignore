@@ -1,0 +1,6 @@
+.github
+.husky
+.next
+node_modules
+public
+scripts
