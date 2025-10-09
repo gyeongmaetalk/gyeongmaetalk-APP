@@ -2,11 +2,12 @@ import { useState } from "react";
 
 import { WebviewEvent } from "@/constants/webview";
 import { useWebView } from "@/hooks/use-webview";
-import { checkNotificationPermission } from "@/utils/notification";
 
 import { Linking, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { WebView, WebViewMessageEvent } from "react-native-webview";
+
+import { getDeviceToken, requestUserPermission } from "../lib/firebase";
 
 export default function WebviewScreen() {
   const { webviewRef, postMessage } = useWebView();
@@ -24,7 +25,11 @@ export default function WebviewScreen() {
       return Linking.openSettings();
     }
     if (payload?.type === WebviewEvent.GET_ALARM_STATUS) {
-      const alarmEnabled = await checkNotificationPermission();
+      const alarmEnabled = await requestUserPermission();
+      if (alarmEnabled) {
+        const token = await getDeviceToken();
+        console.log("token", token);
+      }
       postMessage(WebviewEvent.GET_ALARM_STATUS, { alarmEnabled });
       return;
     }
