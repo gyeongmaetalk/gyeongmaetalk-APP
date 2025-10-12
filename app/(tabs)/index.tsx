@@ -1,21 +1,44 @@
 import { useState } from "react";
 
+import { WebviewEvent } from "@/constants/webview";
 import { useWebView } from "@/hooks/use-webview";
+import { api } from "@/lib/ky";
+import { useTokenStore } from "@/lib/zustand/user";
 
-import { StyleSheet } from "react-native";
+import { Linking, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { WebView, WebViewMessageEvent } from "react-native-webview";
 
+import { getDeviceToken, requestUserPermission } from "../../lib/firebase";
+
 export default function WebviewScreen() {
   const { webviewRef, postMessage } = useWebView();
+  const setToken = useTokenStore((state) => state.setToken);
 
-  // isWebReady가 true일 때만 postMessage 호출하기
+  // isWebReady가 false일 때 Loading 화면 보여주기
   const [isWebReady, setIsWebReady] = useState(false);
 
-  const onMessage = (e: WebViewMessageEvent) => {
-    const payload = JSON.parse(e.nativeEvent.data);
-    if (payload?.type === "WEB_READY") {
+  const onMessage = async (e: WebViewMessageEvent) => {
+    const { type, data } = JSON.parse(e.nativeEvent.data);
+
+    if (type === WebviewEvent.WEB_READY) {
       setIsWebReady(true);
+      return;
+    }
+    if (type === WebviewEvent.OPEN_SETTING) {
+      return Linking.openSettings();
+    }
+    if (type === WebviewEvent.GET_ALARM_STATUS) {
+      const { accessToken, refreshToken } = data;
+
+      setToken({ accessToken, refreshToken });
+      const alarmEnabled = await requestUserPermission();
+      if (alarmEnabled) {
+        const token = await getDeviceToken();
+        await api.post("fcm/token", { searchParams: { fcmToken: token } }).json();
+      }
+      postMessage(WebviewEvent.GET_ALARM_STATUS, { alarmEnabled });
+      return;
     }
   };
 

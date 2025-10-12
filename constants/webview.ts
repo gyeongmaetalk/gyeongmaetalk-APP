@@ -1,0 +1,5 @@
+export enum WebviewEvent {
+  WEB_READY = "WEB_READY",
+  OPEN_SETTING = "OPEN_SETTING",
+  GET_ALARM_STATUS = "GET_ALARM_STATUS",
+}
