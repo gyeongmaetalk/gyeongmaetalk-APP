@@ -21,6 +21,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     entitlements: {
       "aps-environment": "production",
     },
+    infoPlist: {
+      NSAppTransportSecurity: {
+        NSAllowsArbitraryLoads: true,
+      },
+    },
   },
   android: {
     adaptiveIcon: {
