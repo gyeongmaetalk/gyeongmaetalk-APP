@@ -11,6 +11,8 @@ import { WebView, WebViewMessageEvent } from "react-native-webview";
 
 import { getDeviceToken, requestUserPermission } from "../../lib/firebase";
 
+const SERVICE_INTRODUCTION_URL = process.env.EXPO_PUBLIC_SERVICE_INTRODUCTION_URL ?? "";
+
 export default function WebviewScreen() {
   const { webviewRef, postMessage } = useWebView();
   const setToken = useTokenStore((state) => state.setToken);
@@ -39,6 +41,9 @@ export default function WebviewScreen() {
       }
       postMessage(WebviewEvent.GET_ALARM_STATUS, { alarmEnabled });
       return;
+    }
+    if (type === WebviewEvent.OPEN_SERVICE_INTRODUCTION) {
+      return Linking.openURL(SERVICE_INTRODUCTION_URL);
     }
   };
 
