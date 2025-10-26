@@ -6,7 +6,7 @@ config();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "gyeongmaetalk",
+  name: "경매톡",
   slug: "gyeongmaetalk",
   version: "1.0.0",
   orientation: "portrait",
