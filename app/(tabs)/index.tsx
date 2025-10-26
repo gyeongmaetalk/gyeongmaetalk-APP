@@ -12,6 +12,7 @@ import { WebView, WebViewMessageEvent } from "react-native-webview";
 import { getDeviceToken, requestUserPermission } from "../../lib/firebase";
 
 const SERVICE_INTRODUCTION_URL = process.env.EXPO_PUBLIC_SERVICE_INTRODUCTION_URL ?? "";
+const WEBVIEW_URL = process.env.EXPO_PUBLIC_WEBVIEW_URL ?? "";
 
 export default function WebviewScreen() {
   const { webviewRef, postMessage } = useWebView();
@@ -49,7 +50,7 @@ export default function WebviewScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <WebView source={{ uri: "http://localhost:5173" }} ref={webviewRef} onMessage={onMessage} />
+      <WebView source={{ uri: WEBVIEW_URL }} ref={webviewRef} onMessage={onMessage} />
     </SafeAreaView>
   );
 }

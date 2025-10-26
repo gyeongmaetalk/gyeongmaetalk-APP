@@ -23,11 +23,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     infoPlist: {
       NSAppTransportSecurity: {
-        NSAllowsArbitraryLoads: true,
+        NSAllowsArbitraryLoads: false,
+        NSExceptionDomains: {
+          localhost: { NSExceptionAllowsInsecureHTTPLoads: true },
+        },
       },
+      ITSAppUsesNonExemptEncryption: false,
     },
   },
   android: {
+    versionCode: 1,
     adaptiveIcon: {
       backgroundColor: "#E6F4FE",
       foregroundImage: "./assets/images/android-icon-foreground.png",
@@ -38,10 +43,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     predictiveBackGestureEnabled: false,
     package: "com.gyeongmaetalk.gyeongmaetalk",
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? "./google-services.json",
-  },
-  web: {
-    output: "static",
-    favicon: "./assets/images/favicon.png",
   },
   plugins: [
     "expo-router",
@@ -78,5 +79,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   experiments: {
     typedRoutes: true,
     reactCompiler: true,
+  },
+  extra: {
+    eas: {
+      projectId: "173dd514-9f9c-410d-b9e5-9449b1f2bcb1",
+    },
+  },
+  updates: {
+    url: "https://u.expo.dev/173dd514-9f9c-410d-b9e5-9449b1f2bcb1",
+  },
+  runtimeVersion: {
+    policy: "appVersion",
   },
 });
