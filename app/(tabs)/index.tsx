@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { WebviewEvent } from "@/constants/webview";
 import { useWebView } from "@/hooks/use-webview";
 import { api } from "@/lib/ky";
@@ -18,16 +16,8 @@ export default function WebviewScreen() {
   const { webviewRef, postMessage } = useWebView();
   const setToken = useTokenStore((state) => state.setToken);
 
-  // isWebReady가 false일 때 Loading 화면 보여주기
-  const [isWebReady, setIsWebReady] = useState(false);
-
   const onMessage = async (e: WebViewMessageEvent) => {
     const { type, data } = JSON.parse(e.nativeEvent.data);
-
-    if (type === WebviewEvent.WEB_READY) {
-      setIsWebReady(true);
-      return;
-    }
     if (type === WebviewEvent.OPEN_SETTING) {
       return Linking.openSettings();
     }
