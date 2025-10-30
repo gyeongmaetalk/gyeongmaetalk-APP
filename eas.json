@@ -15,14 +15,18 @@
         "simulator": true
       },
       "env": {
-        "ENV": "development"
+        "ENV": "development",
+        "GOOGLE_SERVICES_JSON": "./google-services.json",
+        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
       }
     },
     "preview": {
       "distribution": "internal",
       "channel": "preview",
       "env": {
-        "ENV": "staging"
+        "ENV": "preview",
+        "GOOGLE_SERVICES_JSON": "./google-services.json",
+        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
       },
       "android": {
         "buildType": "apk"

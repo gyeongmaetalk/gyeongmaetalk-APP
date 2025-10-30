@@ -4,6 +4,8 @@ import { config } from "dotenv";
 
 config();
 
+const isProduction = process.env.ENV === "production";
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "경매톡",
@@ -19,7 +21,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundleIdentifier: "com.gyeongmaetalk.gyeongmaetalk",
     googleServicesFile: process.env.GOOGLE_SERVICES_PLIST ?? "./GoogleService-Info.plist",
     entitlements: {
-      "aps-environment": "production",
+      "aps-environment": isProduction ? "production" : "preview",
     },
     infoPlist: {
       NSAppTransportSecurity: {
@@ -34,7 +36,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     versionCode: 1,
     adaptiveIcon: {
-      backgroundColor: "#E6F4FE",
+      backgroundColor: "#ffffff",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
@@ -53,9 +55,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         imageWidth: 200,
         resizeMode: "contain",
         backgroundColor: "#ffffff",
-        dark: {
-          backgroundColor: "#000000",
-        },
       },
     ],
     "@react-native-firebase/app",
