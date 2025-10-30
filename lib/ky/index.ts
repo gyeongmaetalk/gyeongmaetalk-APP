@@ -5,7 +5,11 @@ import ky from "ky";
 
 import { useTokenStore } from "../zustand/user";
 
-const baseUrl = process.env.EXPO_PUBLIC_BASE_URL;
+const isProduction = process.env.ENV === "production";
+
+const baseUrl = isProduction
+  ? process.env.EXPO_PUBLIC_PROD_BASE_URL
+  : process.env.EXPO_PUBLIC_DEV_BASE_URL;
 
 const API_TIMEOUT = 10000; // 10초
 
