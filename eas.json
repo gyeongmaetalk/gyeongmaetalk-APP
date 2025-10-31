@@ -5,36 +5,6 @@
     "promptToConfigurePushNotifications": false
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-      },
-      "ios": {
-        "simulator": true
-      },
-      "env": {
-        "ENV": "development",
-        "GOOGLE_SERVICES_JSON": "./google-services.json",
-        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
-      }
-    },
-    "preview": {
-      "distribution": "internal",
-      "channel": "preview",
-      "env": {
-        "ENV": "preview",
-        "GOOGLE_SERVICES_JSON": "./google-services.json",
-        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
-      },
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "simulator": false
-      }
-    },
     "production": {
       "autoIncrement": true,
       "channel": "production",
@@ -50,6 +20,36 @@
       "ios": {
         "image": "latest",
         "simulator": false
+      }
+    },
+    "preview": {
+      "channel": "production",
+      "distribution": "store",
+      "env": {
+        "ENV": "preview",
+        "GOOGLE_SERVICES_JSON": "./google-services.json",
+        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "simulator": false
+      }
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "ENV": "development",
+        "GOOGLE_SERVICES_JSON": "./google-services.json",
+        "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
       }
     }
   },
