@@ -13,7 +13,9 @@
     "build:preview": "EXPO_NO_CAPABILITY_SYNC=1 eas build -p all --profile preview",
     "build:prod": "EXPO_NO_CAPABILITY_SYNC=1 eas build -p all --profile production",
     "submit:android": "eas submit -p android",
-    "submit:ios": "eas submit -p ios"
+    "submit:ios": "eas submit -p ios",
+    "submit:preview:android": "eas submit -p android --profile preview",
+    "submit:preview:ios": "eas submit -p ios --profile preview"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",

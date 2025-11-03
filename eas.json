@@ -23,6 +23,7 @@
       }
     },
     "preview": {
+      "autoIncrement": true,
       "channel": "preview",
       "distribution": "store",
       "env": {
