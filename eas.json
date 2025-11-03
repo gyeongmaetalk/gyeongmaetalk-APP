@@ -56,11 +56,26 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "./service-account.json"
+        "serviceAccountKeyPath": "./service-account.json",
+        "track": "production"
       },
       "ios": {
         "appleId": "bobplace000@gmail.com",
-        "ascAppId": "6754525400"
+        "ascAppId": "6754525400",
+        "ascAppIdentifier": "com.gyeongmaetalk.gyeongmaetalk",
+        "releaseTrack": "PRODUCTION"
+      }
+    },
+    "preview": {
+      "android": {
+        "serviceAccountKeyPath": "./service-account.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "bobplace000@gmail.com",
+        "ascAppId": "6754525400",
+        "ascAppIdentifier": "com.gyeongmaetalk.preview",
+        "releaseTrack": "TESTFLIGHT"
       }
     }
   }
