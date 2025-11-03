@@ -61,9 +61,7 @@
       },
       "ios": {
         "appleId": "bobplace000@gmail.com",
-        "ascAppId": "6754525400",
-        "ascAppIdentifier": "com.gyeongmaetalk.gyeongmaetalk",
-        "releaseTrack": "PRODUCTION"
+        "ascAppId": "6754525400"
       }
     },
     "preview": {
@@ -73,9 +71,7 @@
       },
       "ios": {
         "appleId": "bobplace000@gmail.com",
-        "ascAppId": "6754525400",
-        "ascAppIdentifier": "com.gyeongmaetalk.preview",
-        "releaseTrack": "TESTFLIGHT"
+        "ascAppId": "6754525400"
       }
     }
   }
