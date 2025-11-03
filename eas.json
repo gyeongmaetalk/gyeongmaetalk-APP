@@ -23,7 +23,7 @@
       }
     },
     "preview": {
-      "channel": "production",
+      "channel": "preview",
       "distribution": "store",
       "env": {
         "ENV": "preview",
