@@ -7,7 +7,6 @@ import { api } from "@/lib/ky";
 import { useTokenStore } from "@/lib/zustand/user";
 
 import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import WebView, { WebViewMessageEvent } from "react-native-webview";
 
 const SERVICE_INTRODUCTION_URL = process.env.EXPO_PUBLIC_SERVICE_INTRODUCTION_URL ?? "";
@@ -59,14 +58,14 @@ export default function WebviewScreen() {
           <ActivityIndicator size="large" />
         </View>
       )}
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <WebView
           source={{ uri: WEBVIEW_URL }}
           ref={webviewRef}
           onLoad={onLoad}
           onMessage={onMessage}
         />
-      </SafeAreaView>
+      </View>
     </>
   );
 }
