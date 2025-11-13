@@ -21,7 +21,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundleIdentifier: "com.gyeongmaetalk.gyeongmaetalk",
     googleServicesFile: process.env.GOOGLE_SERVICES_PLIST ?? "./GoogleService-Info.plist",
     entitlements: {
-      "aps-environment": isProduction ? "production" : "preview",
+      "aps-environment": isProduction ? "production" : "development",
     },
     infoPlist: {
       NSAppTransportSecurity: {
