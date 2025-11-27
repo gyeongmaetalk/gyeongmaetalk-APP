@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { getApp } from "@react-native-firebase/app";
+import type {
+  FirebaseMessagingTypes} from "@react-native-firebase/messaging";
 import {
   AuthorizationStatus,
-  FirebaseMessagingTypes,
   getMessaging,
   getToken,
   onMessage,

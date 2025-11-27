@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { WebView } from "react-native-webview";
+import type { WebView } from "react-native-webview";
 
 const postMessageInstance = (webviewRef: React.RefObject<WebView | null>) => {
   return {

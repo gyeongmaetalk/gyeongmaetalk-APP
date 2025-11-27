@@ -6,43 +6,15 @@ import { useWebView } from "@/hooks/use-webview";
 import { api } from "@/lib/ky";
 import { useTokenStore } from "@/lib/zustand/user";
 
-import { ActivityIndicator, Linking, Platform, StyleSheet, View } from "react-native";
-import WebView, { WebViewMessageEvent, WebViewNavigation } from "react-native-webview";
+import { shouldLoadURL } from "expo-tosspayments-webview/utils";
+import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
+import WebView, { type WebViewMessageEvent, type WebViewNavigation } from "react-native-webview";
 
 const SERVICE_INTRODUCTION_URL = process.env.EXPO_PUBLIC_SERVICE_INTRODUCTION_URL ?? "";
 const WEBVIEW_URL = process.env.EXPO_PUBLIC_WEBVIEW_URL ?? "";
 
-/**
- * URL이 앱스킴인지 확인하는 함수
- */
-const noAppScheme = ["http", "https", "about", "data", "javascript", "file"];
-
-const isAppScheme = (url: string): boolean => {
-  if (!url) return false;
-  const scheme = url.split("://")[0];
-  return !noAppScheme.includes(scheme);
-};
-
-/**
- * iOS에서 앱스킴 URL 처리
- * Android는 네이티브 레벨에서 WebViewClient로 처리됨
- */
-const onShouldStartLoadWithRequest = (request: WebViewNavigation): boolean => {
-  // iOS만 React Native 레벨에서 처리
-  if (Platform.OS === "ios") {
-    const { url } = request;
-
-    // 앱스킴 URL 처리 (http/https가 아닌 경우)
-    if (isAppScheme(url)) {
-      Linking.openURL(url).catch((error) => {
-        console.error("앱 실행 실패:", error);
-      });
-      return false; // WebView에서 로드하지 않음
-    }
-  }
-
-  // 일반 웹 URL은 WebView에서 로드
-  return true;
+const onShouldStartLoadWithRequest = (request: WebViewNavigation) => {
+  return shouldLoadURL(request.url, Linking);
 };
 
 export default function WebviewScreen() {
