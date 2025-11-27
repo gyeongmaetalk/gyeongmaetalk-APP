@@ -75,6 +75,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     "./plugins/with-android-queries.cjs",
+    "./plugins/with-ios-queries.cjs",
   ],
   experiments: {
     typedRoutes: true,
