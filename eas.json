@@ -32,7 +32,7 @@
         "GOOGLE_SERVICES_PLIST": "./GoogleService-Info.plist"
       },
       "android": {
-        "buildType": "app-bundle"
+        "buildType": "apk"
       },
       "ios": {
         "simulator": false
