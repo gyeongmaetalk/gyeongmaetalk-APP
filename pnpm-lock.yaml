@@ -68,9 +68,6 @@ importers:
       expo-system-ui:
         specifier: ~6.0.7
         version: 6.0.7(expo@54.0.12)(react-native-web@0.21.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))
-      expo-tosspayments-webview:
-        specifier: ^1.0.4
-        version: 1.0.4(@expo/config-plugins@54.0.2)(expo@54.0.12)(react-native-webview@13.15.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))
       expo-updates:
         specifier: ~29.0.12
         version: 29.0.12(expo@54.0.12)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
@@ -2724,14 +2721,6 @@ packages:
     peerDependenciesMeta:
       react-native-web:
         optional: true
-
-  expo-tosspayments-webview@1.0.4:
-    resolution: {integrity: sha512-3JSNlrwi9TD2WFMx+/26UU72q20Lv/UK+JZDBDRADW268hwCx/aGi506geJeM7uF1cJlluJatUHzAdF6tWTCQw==}
-    peerDependencies:
-      '@expo/config-plugins': '>=7.0.0'
-      expo: '>=49.0.0'
-      react-native: '>=0.72.0'
-      react-native-webview: '>=13.0.0'
 
   expo-updates-interface@2.0.0:
     resolution: {integrity: sha512-pTzAIufEZdVPKql6iMi5ylVSPqV1qbEopz9G6TSECQmnNde2nwq42PxdFBaUEd8IZJ/fdJLQnOT3m6+XJ5s7jg==}
@@ -8163,13 +8152,6 @@ snapshots:
       react-native-web: 0.21.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     transitivePeerDependencies:
       - supports-color
-
-  expo-tosspayments-webview@1.0.4(@expo/config-plugins@54.0.2)(expo@54.0.12)(react-native-webview@13.15.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0)):
-    dependencies:
-      '@expo/config-plugins': 54.0.2
-      expo: 54.0.12(@babel/core@7.28.4)(@expo/metro-runtime@6.1.2)(expo-router@6.0.10)(react-native-webview@13.15.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
-      react-native: 0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0)
-      react-native-webview: 13.15.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
 
   expo-updates-interface@2.0.0(expo@54.0.12):
     dependencies:

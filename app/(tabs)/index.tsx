@@ -4,16 +4,11 @@ import { WebviewEvent } from "@/constants/webview";
 import { useFcm } from "@/hooks/use-fcm";
 import { useWebView } from "@/hooks/use-webview";
 
-import { shouldLoadURL } from "expo-tosspayments-webview/utils";
 import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
-import WebView, { type WebViewMessageEvent, type WebViewNavigation } from "react-native-webview";
+import WebView, { type WebViewMessageEvent } from "react-native-webview";
 
 const SERVICE_INTRODUCTION_URL = process.env.EXPO_PUBLIC_SERVICE_INTRODUCTION_URL ?? "";
 const WEBVIEW_URL = process.env.EXPO_PUBLIC_WEBVIEW_URL ?? "";
-
-const onShouldStartLoadWithRequest = (request: WebViewNavigation) => {
-  return shouldLoadURL(request.url, Linking);
-};
 
 export default function WebviewScreen() {
   const [isWebReady, setIsWebReady] = useState(false);
@@ -65,7 +60,6 @@ export default function WebviewScreen() {
           ref={webviewRef}
           onLoad={onLoad}
           onMessage={onMessage}
-          onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
         />
       </View>
     </>
