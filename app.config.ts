@@ -74,7 +74,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
-    "expo-tosspayments-webview",
   ],
   experiments: {
     typedRoutes: true,
