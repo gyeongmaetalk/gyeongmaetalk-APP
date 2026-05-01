@@ -45,6 +45,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     predictiveBackGestureEnabled: false,
     package: "com.gyeongmaetalk.gyeongmaetalk",
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? "./google-services.json",
+    permissions: ["com.android.vending.BILLING"],
   },
   plugins: [
     "expo-router",
