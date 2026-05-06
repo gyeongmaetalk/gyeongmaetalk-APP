@@ -86,6 +86,7 @@ export default function WebviewScreen() {
         const targetStoreProduct = storeProducts[0];
 
         if (targetStoreProduct === undefined) {
+          postMessage(WebviewEvent.REQUEST_ORDER_FAILED, { error: "해당 상품이 없습니다." });
           return;
         }
 
