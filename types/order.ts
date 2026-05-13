@@ -5,4 +5,5 @@ export interface OrderProps {
   productId: number;
   productName: string;
   storeProductId: string;
+  revenueCatAppUserId: string;
 }

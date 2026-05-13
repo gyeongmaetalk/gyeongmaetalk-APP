@@ -82,9 +82,9 @@ export default function WebviewScreen() {
       const storeProductId = order.storeProductId;
 
       try {
+        await Purchases.logIn(order.revenueCatAppUserId);
         const storeProducts = await Purchases.getProducts([storeProductId]);
         const targetStoreProduct = storeProducts[0];
-
         if (targetStoreProduct === undefined) {
           postMessage(WebviewEvent.REQUEST_ORDER_FAILED, { error: "해당 상품이 없습니다." });
           return;
@@ -112,7 +112,6 @@ export default function WebviewScreen() {
 
   useEffect(() => {
     Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
-
     if (Platform.OS === "ios") {
       Purchases.configure({ apiKey: IOS_PURCHASES_API_KEY });
     } else if (Platform.OS === "android") {
@@ -129,7 +128,7 @@ export default function WebviewScreen() {
       )}
       <View style={styles.container}>
         <WebView
-          source={{ uri: WEBVIEW_URL }}
+          source={{ uri: "https://preview.gyeongmaetalk.shop" }}
           ref={webviewRef}
           onLoad={onLoad}
           onMessage={onMessage}
