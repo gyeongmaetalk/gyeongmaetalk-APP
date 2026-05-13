@@ -128,7 +128,7 @@ export default function WebviewScreen() {
       )}
       <View style={styles.container}>
         <WebView
-          source={{ uri: "https://preview.gyeongmaetalk.shop" }}
+          source={{ uri: WEBVIEW_URL }}
           ref={webviewRef}
           onLoad={onLoad}
           onMessage={onMessage}
